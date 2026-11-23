@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhargavi - My World 🌷</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicBtn" onclick="toggleMusic()">🎵 Play Music</button>
+
+    <!-- Book Container -->
+    <div class="book">
+        
+        <!-- Page 1: Cover Page -->
+        <div class="page active" id="page1">
+            <div class="content cover">
+                <h1>🌷 Bhargavi 🌷</h1>
+                <p class="subtitle">Welcome to my little pink world</p>
+                <div class="heart-divider">✨ 💖 ✨</div>
+                <p class="desc">एक ऐसी जगह जहाँ मेरी यादें, मेरी बातें और मेरी खुशियाँ कैद हैं।</p>
+                <button class="next-btn" onclick="nextPage(2)">Open Book ➔</button>
+            </div>
+        </div>
+
+        <!-- Page 2: About Me -->
+        <div class="page" id="page2">
+            <div class="content">
+                <h2>✨ About Me ✨</h2>
+                <img src="images/photo1.png" data-base="images/photo1" alt="Bhargavi" class="profile-pic">
+                <p>नमस्ते! मैं <b>Bhargavi</b> हूँ। मुझे सुंदर चीज़ें, पिंक एस्थेटिक, और अपनी लाइफ के हर छोटे पल को खास बनाना पसंद है।</p>
+                <div class="tags">
+                    <span>🌸 Dreamer</span>
+                    <span>🎶 Music Lover</span>
+                    <span>✨ Positive Vibes</span>
+                </div>
+                <div class="nav-btns">
+                    <button class="prev-btn" onclick="prevPage(1)">⬅ Back</button>
+                    <button class="next-btn" onclick="nextPage(3)">Next ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: My Memories (Gallery) -->
+        <div class="page" id="page3">
+            <div class="content">
+                <h2>📸 Sweet Memories</h2>
+                <div class="gallery">
+                    <div class="photo-card">
+                        <img src="images/photo1.png" data-base="images/photo1" alt="Memory 1">
+                        <p>Sunshine & Smiles ☀️</p>
+                    </div>
+                    <div class="photo-card">
+                        <img src="images/photo2.png" data-base="images/photo2" alt="Memory 2">
+                        <p>Aesthetic Vibes 🌷</p>
+                    </div>
+                    <div class="photo-card">
+                        <img src="images/photo3.png" data-base="images/photo3" alt="Memory 3">
+                        <p>Best Day Ever 💖</p>
+                    </div>
+                </div>
+                <div class="nav-btns">
+                    <button class="prev-btn" onclick="prevPage(2)">⬅ Back</button>
+                    <button class="next-btn" onclick="nextPage(4)">Next ➔</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 4: My Diary / Notes -->
+        <div class="page" id="page4">
+            <div class="content">
+                <h2>💌 My Little Diary</h2>
+                <div class="diary-box">
+                    <p>"खुद से प्यार करना सबसे खूबसूरत एहसास है। हर दिन एक नई शुरुआत है, और मेरी कहानी अभी शुरू हुई है..."</p>
+                    <span>— Bhargavi 🌷</span>
+                </div>
+                <div class="favorites">
+                    <h3>My Favorite Things:</h3>
+                    <ul>
+                        <li>🌷 गुलाबी फूल और सूर्यास्त</li>
+                        <li>🎵 सुकून देने वाले गाने</li>
+                        <li>☕ शाम की चाय और अच्छी किताबें</li>
+                    </ul>
+                </div>
+                <div class="nav-btns">
+                    <button class="prev-btn" onclick="prevPage(3)">⬅ Back</button>
+                    <button class="next-btn" onclick="nextPage(1)">Restart ↻</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Auto-fallback for .png / .jpg / .jpeg if extension differs
+        document.querySelectorAll('img[data-base]').forEach(img => {
+            const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
+            let index = 0;
+            const base = img.getAttribute('data-base');
+
+            img.addEventListener('error', function () {
+                index++;
+                if (index < extensions.length) {
+                    img.src = base + extensions[index];
+                }
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
